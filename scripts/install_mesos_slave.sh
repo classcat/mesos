@@ -42,7 +42,7 @@ function restart_mesos_slave () {
 
 function disable_zookeeper () {
   service zookeeper stop
-  h -c "echo manual > /etc/init/zookeeper.override"
+  sh -c "echo manual > /etc/init/zookeeper.override"
 }
 
 
