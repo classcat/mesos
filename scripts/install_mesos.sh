@@ -34,11 +34,11 @@ function config_zookeeper () {
   local ZOO_CONF_MYID=/etc/zookeeper/conf/myid
   local ZOO_CONF_CFG=/etc/zookeeper/conf/zoo.cfg
 
-  echo "1" > ZOO_CONF_MYID
+  echo "1" > ${ZOO_CONF_MYID}
 
-  mv ZOO_CONF_CFG "${ZOO_CONF_CFG}.bak"
+  mv ${ZOO_CONF_CFG} "${ZOO_CONF_CFG}.bak"
 
-  cat << _EOT_ > ZOO_CONF_CFG
+  cat << _EOT_ > ${ZOO_CONF_CFG}
 tickTime=2000
 initLimit=10
 syncLimit=5
@@ -46,7 +46,7 @@ dataDir=/var/lib/zookeeper
 clientPort=2181
 _EOT_
 
-  echo "server.1=${ZOOKEEPER_IP}:2888:3888" >> ZOO_CONF_CFG
+  echo "server.1=${ZOOKEEPER_IP}:2888:3888" >> ${ZOO_CONF_CFG}
 }
 
 
