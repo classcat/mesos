@@ -35,6 +35,6 @@
 * \# apt-get upgrade
 * \# apt-get dist-upgrade
 
-* \# reboot
+* \# sync & reboot
 
 * (\# apt-get install git)
