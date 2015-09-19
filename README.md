@@ -12,6 +12,7 @@
 * 5050 : mesos-master
 * (5051 : mesos-slave)
 * ((8080 : marathon))
+* 8080 : zeppelin
 
 ### Slave
 

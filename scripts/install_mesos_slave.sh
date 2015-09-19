@@ -6,7 +6,7 @@
 
 export LC_ALL=C
 
-. ../conf/mymesos_slave.conf
+. ../conf/mesos_slave.conf
 
 
 function init () {

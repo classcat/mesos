@@ -11,7 +11,7 @@
 
 export LC_ALL=C
 
-. ../conf/mymesos.conf
+. ../conf/mesos.conf
 
 
 function check_if_continue () {
