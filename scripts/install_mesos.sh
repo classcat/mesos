@@ -47,7 +47,8 @@ function install_mesos () {
 
   apt-get update
 
-  # 19-sep-15 : removed
+  # 19-sep-15 : marathon removed
+  apt-get -y install mesos
   #apt-get -y install mesos marathon
 }
 
@@ -109,7 +110,8 @@ function disable_mesos_slave () {
 
 
 function finalize () {
-  echo "http://${ZOOKEEPER_IP}:5050"
+  echo "Check the following URL : "
+  echo "\thttp://${ZOOKEEPER_IP}:5050"
 }
 
 
@@ -141,6 +143,8 @@ if [ $SLAVE_INSTALL == "true" ]; then
 else
   disable_mesos_slave
 fi
+
+finalize
 
 exit 0
 
