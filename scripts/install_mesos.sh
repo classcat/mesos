@@ -1,15 +1,36 @@
 #!/bin/bash
 
 ###############################################################
+# ClassCat(R) Analytics Platform for Spark
 # Copyright (C) 2015 ClassCat(R) Co.,Ltd. All rights reserved.
 ###############################################################
+
+#--- HISTORY --------------------------------------------------
+# 19-sep-15 : remove marathon.
+#--------------------------------------------------------------
 
 export LC_ALL=C
 
 . ../conf/mymesos.conf
 
 
+function check_if_continue () {
+  local var_continue
+
+  echo -ne "About to install mesos master node. Continue ? (y/n) : " >&2
+
+  read var_continue
+  if [ -z "$var_continue" ] || [ "$var_continue" != 'y' ]; then
+    echo -e "Exit the install program."
+    echo -e ""
+    exit 1
+  fi
+}
+
+
 function init () {
+  check_if_continue
+
   apt-get update
 }
 
@@ -26,7 +47,8 @@ function install_mesos () {
 
   apt-get update
 
-  apt-get -y install mesos marathon
+  # 19-sep-15 : removed
+  #apt-get -y install mesos marathon
 }
 
 
@@ -70,9 +92,9 @@ function restart_mesos_master () {
 }
 
 
-function restart_marathon () {
-  service marathon restart
-}
+#function restart_marathon () {
+#  service marathon restart
+#}
 
 
 function restart_mesos_slave () {
@@ -112,7 +134,7 @@ restart_zookeeper
 
 restart_mesos_master
 
-restart_marathon
+#restart_marathon
 
 if [ $SLAVE_INSTALL == "true" ]; then
   restart_mesos_slave
