@@ -9,7 +9,23 @@ export LC_ALL=C
 . ../conf/mesos_slave.conf
 
 
+function check_if_continue () {
+  local var_continue
+
+  echo -ne "About to install mesos slave node. Continue ? (y/n) : " >&2
+
+  read var_continue
+  if [ -z "$var_continue" ] || [ "$var_continue" != 'y' ]; then
+    echo -e "Exit the install program."
+    echo -e ""
+    exit 1
+  fi
+}
+
+
 function init () {
+  check_if_continue
+
   apt-get update
 }
 
