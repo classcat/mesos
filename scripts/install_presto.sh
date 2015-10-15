@@ -11,7 +11,7 @@ export LC_ALL=C
 
 . ../conf/presto.conf
 
-ETC_DIR=/opt/presuto-server/etc
+ETC_DIR=/opt/presto-server/etc
 DATA_DIR=/var/presto/data
 
 CWD=`pwd`
@@ -76,7 +76,7 @@ _EOB3_
 
 fi
 
-  cat << _EOB4_ > $ETC_DIR/etc/log.properties
+  cat << _EOB4_ > $ETC_DIR/log.properties
 com.facebook.presto=INFO
 _EOB4_
 
