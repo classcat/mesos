@@ -35,3 +35,4 @@ service cassandra stop
 
 rm -rf /var/lib/cassandra/data/system/*
 
+rm -rf /var/lib/cassandra/*
