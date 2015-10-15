@@ -5,6 +5,7 @@
 ###############################################################
 
 # --- HISOTRY -------------------------------------------------
+# 15-oct-15 : chmod +x presto-cli.
 # -------------------------------------------------------------
 
 export LC_ALL=C
@@ -107,5 +108,8 @@ wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.122/presto-
 
 
 ln -s /usr/local/bin/presto-cli-0.122-executable.jar /usr/local/bin/presto-cli
+
+chmod +x /usr/local/bin/presto-cli-0.122-executable.jar
+
 
 
