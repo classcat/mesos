@@ -25,10 +25,13 @@ curl -L http://debian.datastax.com/debian/repo_key | sudo apt-key add -
 
 apt-get update
 
-apt-get install cassandra
+apt-get install -y cassandra
 
-apt-get install dsc22
+apt-get install -y dsc22
 
-apt-get install cassandra-tools
+apt-get install -y cassandra-tools
 
+service cassandra stop
+
+rm -rf /var/lib/cassandra/data/system/*
 
