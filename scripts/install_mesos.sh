@@ -5,7 +5,11 @@
 # Copyright (C) 2015 ClassCat(R) Co.,Ltd. All rights reserved.
 ###############################################################
 
+# --- PREREQUISITE -----------------------------------------------------
+# JDK required.
+#
 #--- HISTORY --------------------------------------------------
+# 15-oct-15 : remove jdk.
 # 19-sep-15 : remove marathon.
 #--------------------------------------------------------------
 
@@ -35,9 +39,9 @@ function init () {
 }
 
 
-function install_jdk () {
-  apt-get install -y openjdk-7-jdk
-}
+#function install_jdk () {
+#  apt-get install -y openjdk-7-jdk
+#}
 
 
 function install_mesos () {
@@ -110,8 +114,11 @@ function disable_mesos_slave () {
 
 
 function finalize () {
+  echo ""
+  echo "completed."
   echo "Check the following URL : "
   echo "\thttp://${ZOOKEEPER_IP}:5050"
+  echo ""
 }
 
 
@@ -122,7 +129,7 @@ function finalize () {
 
 init
 
-install_jdk
+# install_jdk
 
 install_mesos
 

@@ -1,8 +1,16 @@
 #!/bin/bash
 
-###############################################################
+########################################################################
 # Copyright (C) 2015 ClassCat(R) Co.,Ltd. All rights reserved.
-###############################################################
+########################################################################
+
+# --- PREREQUISITE -----------------------------------------------------
+# JDK required.
+#
+# --- HISTORY ----------------------------------------------------------
+# 15-oct-15 : remove jdk
+# ----------------------------------------------------------------------
+
 
 export LC_ALL=C
 
@@ -30,9 +38,9 @@ function init () {
 }
 
 
-function install_jdk () {
-  apt-get install -y openjdk-7-jdk
-}
+#function install_jdk () {
+#  apt-get install -y openjdk-7-jdk
+#}
 
 
 function install_mesos_slave () {
@@ -69,7 +77,9 @@ function disable_mesos_master () {
 
 
 function finalize () {
+  echo ""
   echo "completed."
+  echo ""
 }
 
 
@@ -80,7 +90,7 @@ function finalize () {
 
 init
 
-install_jdk
+#install_jdk
 
 install_mesos_slave
 
