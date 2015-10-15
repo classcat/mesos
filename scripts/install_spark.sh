@@ -26,7 +26,7 @@ wget http://ftp.riken.jp/net/apache/spark/spark-1.5.1/spark-1.5.1-bin-hadoop2.4.
 
 tar xfz spark-1.5.1-bin-hadoop2.4.tgz
 
-chown -R hduser.hadoop spark-1.5.1-bin-hadoop2.4
+chown -R spark.spark spark-1.5.1-bin-hadoop2.4
 
 ln -s /opt/packages/spark-1.5.1-bin-hadoop2.4 /opt/spark
 
