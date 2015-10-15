@@ -5,6 +5,7 @@
 ###############################################################
 
 #--- HISTORY ----------------------------------------------------------
+# 15-oct-15 : change the path.
 # 15-oct-15 : fixed.
 #----------------------------------------------------------------------
 
@@ -27,7 +28,8 @@ mv jdk1.8.0_05 /usr/lib/jvm
 
 cat << _EOB_ > /etc/profile.d/jdk.sh
 export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_05
-export PATH=\$PATH:\$JAVA_HOME/bin
+export PATH=\$JAVA_HOME/bin:\$PATH
+#export PATH=\$PATH:\$JAVA_HOME/bin
 _EOB_
 
 

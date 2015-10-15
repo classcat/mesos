@@ -5,6 +5,7 @@
 ########################################################################
 
 #--- HISTORY ----------------------------------------------------------
+# 15-oct-15 : changed the path.
 # 15-oct-15 : fixed.
 #----------------------------------------------------------------------
 
@@ -27,7 +28,8 @@ mv jdk1.7.0_79 /usr/lib/jvm
 
 cat << _EOB_ > /etc/profile.d/jdk.sh
 export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_79
-export PATH=\$PATH:\$JAVA_HOME/bin
+export PATH=\$JAVA_HOME/bin:\$PATH
+#export PATH=\$PATH:\$JAVA_HOME/bin
 _EOB_
 
 

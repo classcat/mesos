@@ -64,6 +64,16 @@ discovery-server.enabled=true
 discovery.uri=${COORDINATOR_URI}
 _EOB3_
 
+  cat << _EOB3B_ > $ETC_DIR/config.properties.local
+coordinator=true
+node-scheduler.include-coordinator=true
+http-server.http.port=8080
+query.max-memory=5GB
+query.max-memory-per-node=1GB
+discovery-server.enabled=true
+discovery.uri=${COORDINATOR_URI}
+_EOB3B_
+
 else
 
   cat << _EOB3_ > $ETC_DIR/config.properties
@@ -87,3 +97,15 @@ mkdir -p $ETC_DIR/catalog
 connector.name=cassandra
 cassandra.contact-points=${CASSANDRA_HOST}
 _EOB5_
+
+
+### CLI
+
+cd /usr/local/bin
+
+wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.122/presto-cli-0.122-executable.jar
+
+
+ln -s /usr/local/bin/presto-cli-0.122-executable.jar /usr/local/bin/presto-cli
+
+
