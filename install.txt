@@ -1,6 +1,40 @@
 
+### 準備
+
+# apt-get upate
+# apt-get -y upgrade
+
+# apt-get -y git
+# apt-get -y ntp
+
+
+### JDK
+
+jdk 8 を入れる
+
+
+### MESOS
+
 jdk に注意
+zookeeper が openjdk 7 
 
-batting
+/* /etc/zookeeper/conf/environment */
+JAVA=/usr/bin/java
 
-zookeeper
+ps で確認
+
+
+5050
+
+
+### SPARK
+
+動作確認
+
+su - spark
+
+$ cat .bash_profile
+export PATH=$PATH:/opt/spark/bin
+
+$ spark-shell --master mesos://10.0.0.240
+
