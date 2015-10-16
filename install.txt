@@ -1,5 +1,5 @@
 
-jdk
+jdk に注意
 
 batting
 
