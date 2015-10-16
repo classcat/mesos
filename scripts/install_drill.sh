@@ -24,6 +24,8 @@ wget http://getdrill.org/drill/download/apache-drill-1.1.0.tar.gz
 
 tar xfz apache-drill-1.1.0.tar.gz
 
+chown -R drill.drill /opt/packages/apache-drill-1.1.0
+
 ln -s /opt/packages/apache-drill-1.1.0 /opt/drill
 
 #conf/drill-overrider.conf
@@ -37,8 +39,8 @@ ln -s /opt/packages/apache-drill-1.1.0 /opt/drill
 #./bin/drillbit.sh start
 
 echo 'unset JAVA_HOME' > /home/drill/.bash_profile
-echo 'export PATH=/usr/bin:$PATH' > /home/drill/.bash_profile
+echo 'export PATH=/usr/bin:$PATH' >> /home/drill/.bash_profile
 
-echo 'export PATH=$PATH:/opt/drill/bin' > /home/drill/.bash_profile
+echo 'export PATH=$PATH:/opt/drill/bin' >> /home/drill/.bash_profile
 
 chown drill.drill /home/drill/.bash_profile
