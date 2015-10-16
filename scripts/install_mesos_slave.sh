@@ -8,6 +8,7 @@
 # JDK required.
 #
 # --- HISTORY ----------------------------------------------------------
+# 16-oct-15 : add jdk.
 # 15-oct-15 : remove jdk
 # ----------------------------------------------------------------------
 
@@ -38,9 +39,9 @@ function init () {
 }
 
 
-#function install_jdk () {
-#  apt-get install -y openjdk-7-jdk
-#}
+function install_jdk () {
+  apt-get install -y openjdk-7-jdk
+}
 
 
 function install_mesos_slave () {
@@ -90,7 +91,7 @@ function finalize () {
 
 init
 
-#install_jdk
+install_jdk
 
 install_mesos_slave
 

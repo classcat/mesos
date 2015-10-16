@@ -9,6 +9,7 @@
 # JDK required.
 #
 #--- HISTORY --------------------------------------------------
+# 16-oct-16 : finally, add jdk here.
 # 15-oct-15 : remove jdk.
 # 19-sep-15 : remove marathon.
 #--------------------------------------------------------------
@@ -39,9 +40,9 @@ function init () {
 }
 
 
-#function install_jdk () {
-#  apt-get install -y openjdk-7-jdk
-#}
+function install_jdk () {
+  apt-get install -y openjdk-7-jdk
+}
 
 
 function install_mesos () {
@@ -129,7 +130,7 @@ function finalize () {
 
 init
 
-# install_jdk
+install_jdk
 
 install_mesos
 
