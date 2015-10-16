@@ -41,3 +41,98 @@ $ spark-shell --master mesos://10.0.0.240
 
 ### CASSANDRA
 
+java 的には、cassandra-env.sh で　java コマンドの出力で決定するもよう。
+
+root は oracle jdk 8 の環境設定なので問題ない。
+
+# nodetool status
+Datacenter: ap-northeast
+========================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens       Owns    Host ID                               Rack
+UN  10.0.0.240  96.97 KB   256          ?       8a3b5b7b-ebda-42c2-be56-0094b2e4e059  1a
+
+
+### PRESTO
+
+// config.properties
+
+node-scheduler.include-coordinator=false
+
+は true にする。
+
+// node.properties
+
+node.id は適宜変更
+
+%%
+root で起動すれば jdk 8 のはず。
+
+# pwd
+/opt/presto-server
+root@ip-10-0-0-240:/opt/presto-server# ./bin/launcher start
+Started as 13643
+
+
+ presto-cli --server localhost:8080 --catalog cassandra
+presto> show tables;
+Query 20151016_154527_00000_bxr2t failed: Schema must be specified when session schema is not set
+
+presto> show keyspaces;
+Query 20151016_154530_00001_bxr2t failed: line 1:6: no viable alternative at input 'show keyspaces'
+show keyspaces
+
+presto> show schemas;
+       Schema       
+--------------------
+ information_schema 
+ system             
+ system_auth        
+ system_distributed 
+ system_traces      
+(5 rows)
+
+Query 20151016_154538_00002_bxr2t, FINISHED, 1 node
+Splits: 2 total, 2 done (100.00%)
+0:02 [5 rows, 95B] [2 rows/s, 51B/s]
+
+
+// 動作検証
+
+CREATE KEYSPACE cctwitter WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+USE cctwitter
+
+CREATE TABLE tweets (
+   id_str text PRIMARY KEY,
+   lang text,
+   text text,
+   created_at text,
+   timestamp_ms varint
+);
+
+# presto-cli --server localhost:8080 --catalog cassandra --schema cctwitter
+presto:cctwitter> select count(*) from tweets;
+ _col0 
+-------
+     0 
+(1 row)
+
+Query 20151016_154801_00005_bxr2t, FINISHED, 1 node
+Splits: 1 total, 1 done (100.00%)
+0:00 [0 rows, 0B] [0 rows/s, 0B/s]
+
+
+/cassandra/cc-twitter-cassandra$
+
+$ sudo apt-get install python-pip
+
+
+
+$ sudo pip install oauth2
+
+$ sudo apt-get install build-essential python-dev libev4 libev-dev
+
+$ sudo pip install cassandra-driver
+
