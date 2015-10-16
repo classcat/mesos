@@ -1,0 +1,20 @@
+
+
+https://github.com/datastax/python-driver
+
+
+$ sudo apt-get install build-essential python-dev
+
+$ sudo apt-get install libev4 libev-dev
+
+
+$ sudo pip install cassandra-driver
+
+
+-- error -
+
+    cassandra/io/libevwrapper.c:2:16: fatal error: ev.h: そのようなファイルやディレクトリはありません
+     #include <ev.h>
+
+
+

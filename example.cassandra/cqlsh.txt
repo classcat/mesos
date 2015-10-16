@@ -1,0 +1,60 @@
+
+
+### 基本 ###
+
+cqlsh> describe cluster;
+
+Cluster: Test Cluster
+Partitioner: Murmur3Partitioner
+
+
+cqlsh> show version
+[cqlsh 5.0.1 | Cassandra 2.2.1 | CQL spec 3.3.0 | Native protocol v4]
+
+
+cqlsh> show host
+Connected to Test Cluster at localhost:9042.
+
+
+### KEYSPACE ###
+
+cqlsh> describe keyspaces
+
+system_traces  system_auth  system  system_distributed
+
+
+cqlsh> CREATE KEYSPACE demo
+WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+
+
+describe demo
+
+CREATE KEYSPACE demo WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+use demo
+
+
+---
+
+CREATE KEYSPACE cctwitter WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+#CREATE KEYSPACE cc_twitter WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+USE cctwitter
+
+CREATE TABLE tweets (
+   id_str text PRIMARY KEY,
+   lang text,
+   text text,
+   created_at text,
+   timestamp_ms varint
+);
+
+
+select * from tweets;
+
+ id_str | created_at | lang | text | timestamp_ms
+--------+------------+------+------+--------------
+
+(0 rows)
+
