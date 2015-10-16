@@ -38,3 +38,6 @@ export PATH=$PATH:/opt/spark/bin
 
 $ spark-shell --master mesos://10.0.0.240
 
+
+### CASSANDRA
+
